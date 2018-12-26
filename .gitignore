@@ -69,3 +69,4 @@ fabric.properties
 .idea/codeStyles
 .idea/modules.xml
 .idea/sonarlint
+*.db
