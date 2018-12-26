@@ -1,4 +1,4 @@
-package com.github.sankowskiwojciech.bookhunter.model.user.registration.db;
+package com.github.sankowskiwojciech.bookhunter.model.user.authentication.db;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Data
 @EqualsAndHashCode(of = {"userName", "emailAddress"})
-public class UserRegistrationEntity {
+public class UserAuthenticationEntity {
 
     @Id
     @Column(name = "USER_NAME", unique = true, nullable = false)
