@@ -12,7 +12,7 @@ public class RegistrationBackendImpl implements RegistrationBackend {
 
     @Override
     public UserAuthentication registerUser(UserAuthentication userAuthentication) {
-        UserAuthenticationEntity userAuthenticationEntity = new UserAuthenticationEntity(userAuthentication.getUserName(), userAuthentication.getPassword(), userAuthentication.getEmailAddress());
+        UserAuthenticationEntity userAuthenticationEntity = new UserAuthenticationEntity(userAuthentication.getUsername(), userAuthentication.getPassword(), userAuthentication.getEmailAddress());
         UserAuthenticationEntity registeredUser = userAuthenticationRepository.saveAndFlush(userAuthenticationEntity);
         return new UserAuthentication(registeredUser.getUserName(), registeredUser.getPassword(), registeredUser.getEmailAddress());
     }

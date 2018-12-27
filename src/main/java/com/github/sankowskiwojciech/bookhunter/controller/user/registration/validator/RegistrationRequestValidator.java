@@ -1,9 +1,9 @@
 package com.github.sankowskiwojciech.bookhunter.controller.user.registration.validator;
 
 import com.github.sankowskiwojciech.bookhunter.model.user.registration.UserRegistrationDto;
-import com.github.sankowskiwojciech.bookhunter.model.user.registration.exception.registration.InvalidFieldLengthException;
-import com.github.sankowskiwojciech.bookhunter.model.user.registration.exception.registration.MissingMandatoryFieldException;
-import com.github.sankowskiwojciech.bookhunter.model.user.registration.exception.registration.PasswordMismatchException;
+import com.github.sankowskiwojciech.bookhunter.model.user.registration.exception.InvalidFieldLengthException;
+import com.github.sankowskiwojciech.bookhunter.model.user.registration.exception.MissingMandatoryFieldException;
+import com.github.sankowskiwojciech.bookhunter.model.user.registration.exception.PasswordMismatchException;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;

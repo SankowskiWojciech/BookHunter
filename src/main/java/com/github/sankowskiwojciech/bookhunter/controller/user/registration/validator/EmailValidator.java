@@ -1,6 +1,6 @@
 package com.github.sankowskiwojciech.bookhunter.controller.user.registration.validator;
 
-import com.github.sankowskiwojciech.bookhunter.model.user.registration.exception.registration.InvalidEmailAddressFormatException;
+import com.github.sankowskiwojciech.bookhunter.model.user.registration.exception.InvalidEmailAddressFormatException;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

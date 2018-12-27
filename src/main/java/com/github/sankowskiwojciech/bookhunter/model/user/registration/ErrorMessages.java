@@ -12,4 +12,5 @@ public class ErrorMessages {
     public static final String INVALID_LENGTH = "Length of %s field must be between %d and %d characters";
     public static final String USER_ALREADY_EXISTS = "User with given %s already exists";
     public static final String PASSWORD_MISMATCH = "Passwords are different";
+    public static final String INVALID_USERNAME_OR_PASSWORD = "Invalid username or password";
 }

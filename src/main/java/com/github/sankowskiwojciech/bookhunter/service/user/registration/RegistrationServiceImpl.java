@@ -2,7 +2,7 @@ package com.github.sankowskiwojciech.bookhunter.service.user.registration;
 
 import com.github.sankowskiwojciech.bookhunter.backend.user.registration.RegistrationBackend;
 import com.github.sankowskiwojciech.bookhunter.model.user.authentication.UserAuthentication;
-import com.github.sankowskiwojciech.bookhunter.model.user.registration.exception.registration.UserAlreadyExistsException;
+import com.github.sankowskiwojciech.bookhunter.model.user.registration.exception.UserAlreadyExistsException;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -17,7 +17,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public UserAuthentication registerUser(UserAuthentication userAuthentication) {
-        validateIfUserIsAlreadyRegistered(userAuthentication.getUserName(), userAuthentication.getEmailAddress());
+        validateIfUserIsAlreadyRegistered(userAuthentication.getUsername(), userAuthentication.getEmailAddress());
         String encodedPassword = encodePassword(userAuthentication.getPassword());
         userAuthentication.setPassword(encodedPassword);
         return registrationBackend.registerUser(userAuthentication);

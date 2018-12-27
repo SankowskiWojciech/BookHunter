@@ -29,6 +29,6 @@ public class RegistrationControllerImpl {
         UserAuthentication userAuthentication = new UserAuthentication(userRegistrationDto.getUserName(),
                 userRegistrationDto.getPassword(), userRegistrationDto.getEmailAddress());
         UserAuthentication registeredUser = registrationService.registerUser(userAuthentication);
-        return new UserRegistrationResponse(registeredUser.getUserName(), registeredUser.getEmailAddress());
+        return new UserRegistrationResponse(registeredUser.getUsername(), registeredUser.getEmailAddress());
     }
 }
