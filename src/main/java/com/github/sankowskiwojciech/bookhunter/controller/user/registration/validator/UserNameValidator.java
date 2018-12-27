@@ -1,6 +1,6 @@
 package com.github.sankowskiwojciech.bookhunter.controller.user.registration.validator;
 
-import com.github.sankowskiwojciech.bookhunter.model.user.registration.exception.registration.InvalidUserNameFormatException;
+import com.github.sankowskiwojciech.bookhunter.model.user.registration.exception.InvalidUserNameFormatException;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;

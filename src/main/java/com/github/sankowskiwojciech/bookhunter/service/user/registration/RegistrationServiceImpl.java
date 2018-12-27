@@ -1,8 +1,8 @@
 package com.github.sankowskiwojciech.bookhunter.service.user.registration;
 
 import com.github.sankowskiwojciech.bookhunter.backend.user.registration.RegistrationBackend;
-import com.github.sankowskiwojciech.bookhunter.model.user.registration.UserRegistration;
-import com.github.sankowskiwojciech.bookhunter.model.user.registration.exception.registration.UserAlreadyExistsException;
+import com.github.sankowskiwojciech.bookhunter.model.user.authentication.UserAuthentication;
+import com.github.sankowskiwojciech.bookhunter.model.user.registration.exception.UserAlreadyExistsException;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -16,11 +16,11 @@ public class RegistrationServiceImpl implements RegistrationService {
     private static final String EMAIL_ADDRESS = "email address";
 
     @Override
-    public UserRegistration registerUser(UserRegistration userRegistration) {
-        validateIfUserIsAlreadyRegistered(userRegistration.getUserName(), userRegistration.getEmailAddress());
-        String encodedPassword = encodePassword(userRegistration.getPassword());
-        userRegistration.setPassword(encodedPassword);
-        return registrationBackend.registerUser(userRegistration);
+    public UserAuthentication registerUser(UserAuthentication userAuthentication) {
+        validateIfUserIsAlreadyRegistered(userAuthentication.getUsername(), userAuthentication.getEmailAddress());
+        String encodedPassword = encodePassword(userAuthentication.getPassword());
+        userAuthentication.setPassword(encodedPassword);
+        return registrationBackend.registerUser(userAuthentication);
     }
 
     private String encodePassword(String password) {

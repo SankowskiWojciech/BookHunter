@@ -1,10 +1,10 @@
 package com.github.sankowskiwojciech.bookhunter.backend.user.registration;
 
-import com.github.sankowskiwojciech.bookhunter.model.user.registration.UserRegistration;
+import com.github.sankowskiwojciech.bookhunter.model.user.authentication.UserAuthentication;
 
 public interface RegistrationBackend {
 
-    UserRegistration registerUser(UserRegistration userRegistration);
+    UserAuthentication registerUser(UserAuthentication userAuthentication);
 
     Boolean isUserWithGivenUserNameAlreadyRegistered(String userName);
 

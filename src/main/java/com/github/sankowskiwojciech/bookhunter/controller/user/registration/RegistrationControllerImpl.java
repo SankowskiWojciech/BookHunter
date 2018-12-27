@@ -1,10 +1,9 @@
 package com.github.sankowskiwojciech.bookhunter.controller.user.registration;
 
-import com.github.sankowskiwojciech.bookhunter.backend.user.registration.RegistrationBackend;
 import com.github.sankowskiwojciech.bookhunter.controller.user.registration.validator.EmailValidator;
 import com.github.sankowskiwojciech.bookhunter.controller.user.registration.validator.RegistrationRequestValidator;
 import com.github.sankowskiwojciech.bookhunter.controller.user.registration.validator.UserNameValidator;
-import com.github.sankowskiwojciech.bookhunter.model.user.registration.UserRegistration;
+import com.github.sankowskiwojciech.bookhunter.model.user.authentication.UserAuthentication;
 import com.github.sankowskiwojciech.bookhunter.model.user.registration.UserRegistrationDto;
 import com.github.sankowskiwojciech.bookhunter.model.user.registration.UserRegistrationResponse;
 import com.github.sankowskiwojciech.bookhunter.service.user.registration.RegistrationService;
@@ -27,9 +26,9 @@ public class RegistrationControllerImpl {
         RegistrationRequestValidator.validateRequest(userRegistrationDto);
         EmailValidator.validateEmail(userRegistrationDto.getEmailAddress());
         UserNameValidator.validateUserName(userRegistrationDto.getUserName());
-        UserRegistration userRegistration = new UserRegistration(userRegistrationDto.getUserName(),
+        UserAuthentication userAuthentication = new UserAuthentication(userRegistrationDto.getUserName(),
                 userRegistrationDto.getPassword(), userRegistrationDto.getEmailAddress());
-        UserRegistration registeredUser = registrationService.registerUser(userRegistration);
-        return new UserRegistrationResponse(registeredUser.getUserName(), registeredUser.getEmailAddress());
+        UserAuthentication registeredUser = registrationService.registerUser(userAuthentication);
+        return new UserRegistrationResponse(registeredUser.getUsername(), registeredUser.getEmailAddress());
     }
 }

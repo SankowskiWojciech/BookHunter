@@ -1,5 +1,7 @@
 package com.github.sankowskiwojciech.bookhunter.config;
 
+import com.github.sankowskiwojciech.bookhunter.backend.user.authentication.AuthenticationBackend;
+import com.github.sankowskiwojciech.bookhunter.backend.user.authentication.AuthenticationBackendImpl;
 import com.github.sankowskiwojciech.bookhunter.backend.user.registration.RegistrationBackend;
 import com.github.sankowskiwojciech.bookhunter.backend.user.registration.RegistrationBackendImpl;
 import com.github.sankowskiwojciech.bookhunter.backend.repository.UserAuthenticationRepository;
@@ -16,5 +18,10 @@ public class BackendConfig {
     @Bean
     public RegistrationBackend registrationBackend() {
         return new RegistrationBackendImpl(userAuthenticationRepository);
+    }
+
+    @Bean
+    public AuthenticationBackend authenticationBackend() {
+        return new AuthenticationBackendImpl(userAuthenticationRepository);
     }
 }

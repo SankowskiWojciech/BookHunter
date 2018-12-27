@@ -1,4 +1,4 @@
-package com.github.sankowskiwojciech.bookhunter.model.user.registration.exception.registration;
+package com.github.sankowskiwojciech.bookhunter.model.user.registration.exception;
 
 import com.github.sankowskiwojciech.bookhunter.model.user.registration.ErrorMessages;
 import org.springframework.http.HttpStatus;
