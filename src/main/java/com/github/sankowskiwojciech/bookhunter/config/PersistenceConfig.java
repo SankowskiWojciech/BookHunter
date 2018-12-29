@@ -1,6 +1,5 @@
 package com.github.sankowskiwojciech.bookhunter.config;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,19 +10,18 @@ import javax.sql.DataSource;
 @Configuration
 public class PersistenceConfig {
 
-    private static final String USERNAME = "user";
-    private static final String PASSWORD = "";
-    private static final String DATABASE_URL = "jdbc:h2:file:./BookHunter";
+    private static final String USERNAME = "postgres";
+    private static final String PASSWORD = "password";
+    private static final String DATABASE_URL = "jdbc:postgresql://localhost:5432/BookHunterDB";
 
     @Bean
-    @ConfigurationProperties(prefix = "spring.datasource")
     @Primary
     public DataSource dataSource() {
         return DataSourceBuilder.create()
                 .username(USERNAME)
                 .password(PASSWORD)
                 .url(DATABASE_URL)
-                .driverClassName(org.h2.Driver.class.getName())
+                .driverClassName(org.postgresql.Driver.class.getName())
                 .build();
     }
 }
