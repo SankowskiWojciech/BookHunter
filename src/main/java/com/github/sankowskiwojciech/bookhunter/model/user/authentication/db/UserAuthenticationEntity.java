@@ -20,12 +20,12 @@ import javax.persistence.Table;
 public class UserAuthenticationEntity {
 
     @Id
-    @Column(name = "USER_NAME", unique = true, nullable = false)
+    @Column(name = "USER_NAME", unique = true, nullable = false, length = 20)
     private String userName;
 
-    @Column(name = "PASSWORD", nullable = false)
+    @Column(name = "PASSWORD", nullable = false, length = 60)
     private String password;
 
-    @Column(name = "EMAIL_ADDRESS", unique = true, nullable = false)
+    @Column(name = "EMAIL_ADDRESS", unique = true, nullable = false, length = 30)
     private String emailAddress;
 }
