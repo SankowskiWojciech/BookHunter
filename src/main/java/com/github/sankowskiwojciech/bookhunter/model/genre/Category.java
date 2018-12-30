@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-public enum Genre {
+public enum Category {
 
     ART("Art"),
     BIOGRAPHY("Biography"),
@@ -33,5 +33,5 @@ public enum Genre {
     TRAVEL("Travel"),
     CLASSIC("Classic");
 
-    private final String genre;
+    private final String category;
 }

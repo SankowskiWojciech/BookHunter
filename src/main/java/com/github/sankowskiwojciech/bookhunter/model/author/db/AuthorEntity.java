@@ -1,7 +1,7 @@
 package com.github.sankowskiwojciech.bookhunter.model.author.db;
 
-import com.github.sankowskiwojciech.bookhunter.model.genre.converter.GenresConverter;
-import com.github.sankowskiwojciech.bookhunter.model.genre.Genre;
+import com.github.sankowskiwojciech.bookhunter.model.genre.converter.CategoriesConverter;
+import com.github.sankowskiwojciech.bookhunter.model.genre.Category;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -48,7 +48,7 @@ public class AuthorEntity {
     @Column(name = "DESCRIPTION", length = 5000)
     private String description;
 
-    @Column(name = "GENRES")
-    @Convert(converter = GenresConverter.class)
-    private Set<Genre> genres;
+    @Column(name = "CATEGORIES")
+    @Convert(converter = CategoriesConverter.class)
+    private Set<Category> categories;
 }

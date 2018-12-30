@@ -2,7 +2,7 @@ package com.github.sankowskiwojciech.bookhunter.controller.book.transformer;
 
 import com.github.sankowskiwojciech.bookhunter.model.book.Book;
 import com.github.sankowskiwojciech.bookhunter.model.book.BookResponse;
-import com.github.sankowskiwojciech.bookhunter.model.genre.Genre;
+import com.github.sankowskiwojciech.bookhunter.model.genre.Category;
 
 import java.util.Locale;
 import java.util.function.Function;
@@ -16,7 +16,7 @@ public class BookToBookResponse implements Function<Book, BookResponse> {
                 book.getTitle(),
                 book.getOriginalTitle(),
                 book.getReleaseYear(),
-                book.getGenres().stream().map(Genre::getGenre).collect(Collectors.toSet()),
+                book.getCategories().stream().map(Category::getCategory).collect(Collectors.toSet()),
                 book.getDescription(),
                 getCountryByCountryCode(book.getCountryCode()),
                 book.getCoverImage(),

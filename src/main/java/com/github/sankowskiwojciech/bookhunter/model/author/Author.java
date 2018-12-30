@@ -1,6 +1,6 @@
 package com.github.sankowskiwojciech.bookhunter.model.author;
 
-import com.github.sankowskiwojciech.bookhunter.model.genre.Genre;
+import com.github.sankowskiwojciech.bookhunter.model.genre.Category;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -20,5 +20,5 @@ public class Author {
     private final String deathYear;
     private final InputStream profilePhoto;
     private final String description;
-    private final Set<Genre> genres;
+    private final Set<Category> categories;
 }
