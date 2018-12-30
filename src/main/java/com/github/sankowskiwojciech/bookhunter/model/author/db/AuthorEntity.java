@@ -1,6 +1,6 @@
 package com.github.sankowskiwojciech.bookhunter.model.author.db;
 
-import com.github.sankowskiwojciech.bookhunter.model.author.db.converter.GenresConverter;
+import com.github.sankowskiwojciech.bookhunter.model.genre.converter.GenresConverter;
 import com.github.sankowskiwojciech.bookhunter.model.genre.Genre;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

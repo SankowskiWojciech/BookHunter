@@ -14,5 +14,6 @@ public class ErrorMessages {
     public static final String PASSWORD_MISMATCH = "Passwords are different";
     public static final String INVALID_USERNAME_OR_PASSWORD = "Invalid username or password";
     public static final String AUTHOR_NOT_FOUND = "Author not found";
+    public static final String BOOK_NOT_FOUND = "Book not found";
     public static final String MISSING_BODY_REQUEST = "Missing body request";
 }

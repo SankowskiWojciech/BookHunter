@@ -2,12 +2,16 @@ package com.github.sankowskiwojciech.bookhunter.config;
 
 import com.github.sankowskiwojciech.bookhunter.backend.author.AuthorBackend;
 import com.github.sankowskiwojciech.bookhunter.backend.author.AuthorBackendImpl;
+import com.github.sankowskiwojciech.bookhunter.backend.book.BookBackend;
+import com.github.sankowskiwojciech.bookhunter.backend.book.BookBackendImpl;
 import com.github.sankowskiwojciech.bookhunter.backend.repository.AuthorRepository;
+import com.github.sankowskiwojciech.bookhunter.backend.repository.BookAuthorRelationRepository;
+import com.github.sankowskiwojciech.bookhunter.backend.repository.BookRepository;
+import com.github.sankowskiwojciech.bookhunter.backend.repository.UserAuthenticationRepository;
 import com.github.sankowskiwojciech.bookhunter.backend.user.authentication.AuthenticationBackend;
 import com.github.sankowskiwojciech.bookhunter.backend.user.authentication.AuthenticationBackendImpl;
 import com.github.sankowskiwojciech.bookhunter.backend.user.registration.RegistrationBackend;
 import com.github.sankowskiwojciech.bookhunter.backend.user.registration.RegistrationBackendImpl;
-import com.github.sankowskiwojciech.bookhunter.backend.repository.UserAuthenticationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +21,12 @@ public class BackendConfig {
 
     @Autowired
     private AuthorRepository authorRepository;
+
+    @Autowired
+    private BookRepository bookRepository;
+
+    @Autowired
+    private BookAuthorRelationRepository bookAuthorRelationRepository;
 
     @Autowired
     private UserAuthenticationRepository userAuthenticationRepository;
@@ -34,5 +44,10 @@ public class BackendConfig {
     @Bean
     public AuthorBackend authorBackend() {
         return new AuthorBackendImpl(authorRepository);
+    }
+
+    @Bean
+    public BookBackend bookBackend() {
+        return new BookBackendImpl(bookRepository, bookAuthorRelationRepository);
     }
 }

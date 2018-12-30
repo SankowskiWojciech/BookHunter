@@ -22,6 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String REGISTER_ENDPOINT = "/api/user/register";
     private static final String LOGIN_ENDPOINT = "/api/user/login";
     private static final String AUTHOR_INFO_ENDPOINT = "/api/author/*";
+    private static final String BOOK_INFO_ENDPOINT = "/api/book/*";
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -31,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/", REGISTER_ENDPOINT, LOGIN_ENDPOINT, AUTHOR_INFO_ENDPOINT)
+                .antMatchers("/", REGISTER_ENDPOINT, LOGIN_ENDPOINT, AUTHOR_INFO_ENDPOINT, BOOK_INFO_ENDPOINT)
                 .permitAll();
         http
                 .authorizeRequests()
