@@ -30,7 +30,8 @@ public enum Genre {
     SCIENCE_FICTION("Science fiction"),
     SPORTS("Sports"),
     THRILLER("Thriller"),
-    TRAVEL("Travel");
+    TRAVEL("Travel"),
+    CLASSIC("Classic");
 
     private final String genre;
 }
