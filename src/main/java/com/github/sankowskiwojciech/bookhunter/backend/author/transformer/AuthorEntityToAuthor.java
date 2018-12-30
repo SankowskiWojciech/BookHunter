@@ -15,7 +15,7 @@ public class AuthorEntityToAuthor implements Function<AuthorEntity, Author> {
                 authorEntity.getSurname(),
                 authorEntity.getBirthYear(),
                 authorEntity.getDeathYear(),
-                authorEntity.getImage(),
+                authorEntity.getProfilePhoto(),
                 authorEntity.getDescription(),
                 authorEntity.getGenres()
         );

@@ -42,8 +42,8 @@ public class AuthorEntity {
     private String deathYear;
 
     @Lob
-    @Column(name = "IMAGE")
-    private InputStream image;
+    @Column(name = "PROFILE_PHOTO")
+    private InputStream profilePhoto;
 
     @Column(name = "DESCRIPTION", length = 5000)
     private String description;

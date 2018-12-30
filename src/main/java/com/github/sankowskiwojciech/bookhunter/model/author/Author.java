@@ -18,7 +18,7 @@ public class Author {
     private final String surname;
     private final String birthYear;
     private final String deathYear;
-    private final InputStream image;
+    private final InputStream profilePhoto;
     private final String description;
     private final Set<Genre> genres;
 }

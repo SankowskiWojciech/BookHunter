@@ -16,7 +16,7 @@ public class AuthorToAuthorResponse implements Function<Author, AuthorResponse> 
                 author.getSurname(),
                 author.getBirthYear(),
                 author.getDeathYear(),
-                author.getImage(),
+                author.getProfilePhoto(),
                 author.getDescription(),
                 author.getGenres().stream().map(Genre::getGenre).collect(Collectors.toSet())
         );
