@@ -1,5 +1,6 @@
 package com.github.sankowskiwojciech.bookhunter.controller.user.registration.validator;
 
+import com.github.sankowskiwojciech.bookhunter.model.exception.MissingBodyRequestException;
 import com.github.sankowskiwojciech.bookhunter.model.user.registration.UserRegistrationDto;
 import com.github.sankowskiwojciech.bookhunter.model.user.registration.exception.InvalidFieldLengthException;
 import com.github.sankowskiwojciech.bookhunter.model.user.registration.exception.MissingMandatoryFieldException;
@@ -22,7 +23,8 @@ public class RegistrationRequestValidator {
 
     private static final String USER_NAME_FIELD_NAME = "userName";
     private static final String PASSWORD_FIELD_NAME = "password";
-    private static final String EMAIL_ADDRESS_FIELD_NAME = "email address";
+    private static final String MATCHING_PASSWORD_FIELD_NAME = "matchingPassword";
+    private static final String EMAIL_ADDRESS_FIELD_NAME = "emailAddress";
 
 
     public static void validateRequest(UserRegistrationDto userRegistrationDto) {
@@ -34,8 +36,20 @@ public class RegistrationRequestValidator {
     }
 
     private static void validateIfFieldsAreNotNull(UserRegistrationDto userRegistrationDto) {
-        if (userRegistrationDto == null || StringUtils.isEmpty(userRegistrationDto.getUserName()) || StringUtils.isEmpty(userRegistrationDto.getPassword()) || StringUtils.isEmpty(userRegistrationDto.getEmailAddress())) {
-            throw new MissingMandatoryFieldException();
+        if (userRegistrationDto == null) {
+            throw new MissingBodyRequestException();
+        }
+        if (StringUtils.isEmpty(userRegistrationDto.getUserName())) {
+            throw new MissingMandatoryFieldException(USER_NAME_FIELD_NAME);
+        }
+        if (StringUtils.isEmpty(userRegistrationDto.getPassword())) {
+            throw new MissingMandatoryFieldException(PASSWORD_FIELD_NAME);
+        }
+        if (StringUtils.isEmpty(userRegistrationDto.getMatchingPassword())) {
+            throw new MissingMandatoryFieldException(MATCHING_PASSWORD_FIELD_NAME);
+        }
+        if (StringUtils.isEmpty(userRegistrationDto.getEmailAddress())) {
+            throw new MissingMandatoryFieldException(EMAIL_ADDRESS_FIELD_NAME);
         }
     }
 
