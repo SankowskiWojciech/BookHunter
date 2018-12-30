@@ -1,7 +1,10 @@
 package com.github.sankowskiwojciech.bookhunter.config;
 
+import com.github.sankowskiwojciech.bookhunter.backend.author.AuthorBackend;
 import com.github.sankowskiwojciech.bookhunter.backend.user.authentication.AuthenticationBackend;
 import com.github.sankowskiwojciech.bookhunter.backend.user.registration.RegistrationBackend;
+import com.github.sankowskiwojciech.bookhunter.service.author.AuthorService;
+import com.github.sankowskiwojciech.bookhunter.service.author.AuthorServiceImpl;
 import com.github.sankowskiwojciech.bookhunter.service.user.authentication.UserDetailsServiceImpl;
 import com.github.sankowskiwojciech.bookhunter.service.user.registration.RegistrationService;
 import com.github.sankowskiwojciech.bookhunter.service.user.registration.RegistrationServiceImpl;
@@ -13,6 +16,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class ServiceConfig {
+
+    @Autowired
+    private AuthorBackend authorBackend;
 
     @Autowired
     private RegistrationBackend registrationBackend;
@@ -31,5 +37,10 @@ public class ServiceConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         return new UserDetailsServiceImpl(authenticationBackend);
+    }
+
+    @Bean
+    public AuthorService authorService() {
+        return new AuthorServiceImpl(authorBackend);
     }
 }

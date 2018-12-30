@@ -5,7 +5,9 @@ import com.github.sankowskiwojciech.bookhunter.model.user.authentication.UserAut
 import com.github.sankowskiwojciech.bookhunter.model.user.registration.exception.UserAlreadyExistsException;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
+@Service
 @AllArgsConstructor
 public class RegistrationServiceImpl implements RegistrationService {
 
