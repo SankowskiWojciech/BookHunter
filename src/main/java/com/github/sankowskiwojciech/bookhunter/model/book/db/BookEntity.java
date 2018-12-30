@@ -1,7 +1,7 @@
 package com.github.sankowskiwojciech.bookhunter.model.book.db;
 
-import com.github.sankowskiwojciech.bookhunter.model.genre.Genre;
-import com.github.sankowskiwojciech.bookhunter.model.genre.converter.GenresConverter;
+import com.github.sankowskiwojciech.bookhunter.model.genre.Category;
+import com.github.sankowskiwojciech.bookhunter.model.genre.converter.CategoriesConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,9 +38,9 @@ public class BookEntity {
     @Column(name = "RELEASE_YEAR", nullable = false, length = 4)
     private String releaseYear;
 
-    @Column(name = "GENRES", nullable = false)
-    @Convert(converter = GenresConverter.class)
-    private Set<Genre> genres;
+    @Column(name = "CATEGORIES", nullable = false)
+    @Convert(converter = CategoriesConverter.class)
+    private Set<Category> categories;
 
     @Column(name = "DESCRIPTION", length = 5000)
     private String description;

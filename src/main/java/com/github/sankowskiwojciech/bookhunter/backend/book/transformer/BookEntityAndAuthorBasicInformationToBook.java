@@ -15,7 +15,7 @@ public class BookEntityAndAuthorBasicInformationToBook implements BiFunction<Lis
                 bookEntity.getTitle(),
                 bookEntity.getOriginalTitle(),
                 bookEntity.getReleaseYear(),
-                bookEntity.getGenres(),
+                bookEntity.getCategories(),
                 bookEntity.getDescription(),
                 bookEntity.getCountryCode(),
                 bookEntity.getCoverImage(),

@@ -2,7 +2,7 @@ package com.github.sankowskiwojciech.bookhunter.controller.author.transformer;
 
 import com.github.sankowskiwojciech.bookhunter.model.author.Author;
 import com.github.sankowskiwojciech.bookhunter.model.author.AuthorResponse;
-import com.github.sankowskiwojciech.bookhunter.model.genre.Genre;
+import com.github.sankowskiwojciech.bookhunter.model.genre.Category;
 
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -16,9 +16,9 @@ public class AuthorToAuthorResponse implements Function<Author, AuthorResponse> 
                 author.getSurname(),
                 author.getBirthYear(),
                 author.getDeathYear(),
-                author.getImage(),
+                author.getProfilePhoto(),
                 author.getDescription(),
-                author.getGenres().stream().map(Genre::getGenre).collect(Collectors.toSet())
+                author.getCategories().stream().map(Category::getCategory).collect(Collectors.toSet())
         );
     }
 }

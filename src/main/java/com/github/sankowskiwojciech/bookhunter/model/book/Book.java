@@ -1,7 +1,7 @@
 package com.github.sankowskiwojciech.bookhunter.model.book;
 
 import com.github.sankowskiwojciech.bookhunter.model.author.AuthorBasicInformation;
-import com.github.sankowskiwojciech.bookhunter.model.genre.Genre;
+import com.github.sankowskiwojciech.bookhunter.model.genre.Category;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -19,7 +19,7 @@ public class Book {
     private final String title;
     private final String originalTitle;
     private final String releaseYear;
-    private final Set<Genre> genres;
+    private final Set<Category> categories;
     private final String description;
     private final String countryCode;
     private final InputStream coverImage;
