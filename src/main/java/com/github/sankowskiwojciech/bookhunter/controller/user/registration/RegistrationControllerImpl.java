@@ -5,30 +5,40 @@ import com.github.sankowskiwojciech.bookhunter.controller.user.registration.vali
 import com.github.sankowskiwojciech.bookhunter.controller.user.registration.validator.UserNameValidator;
 import com.github.sankowskiwojciech.bookhunter.model.user.authentication.UserAuthentication;
 import com.github.sankowskiwojciech.bookhunter.model.user.registration.UserRegistrationDto;
-import com.github.sankowskiwojciech.bookhunter.model.user.registration.UserRegistrationResponse;
 import com.github.sankowskiwojciech.bookhunter.service.user.registration.RegistrationService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@RestController
-@RequestMapping(value = "api/user")
+@Controller
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class RegistrationControllerImpl {
 
     private final RegistrationService registrationService;
 
     @PostMapping("/register")
-    public UserRegistrationResponse registerUser(@RequestBody UserRegistrationDto userRegistrationDto) {
-        RegistrationRequestValidator.validateRequest(userRegistrationDto);
-        EmailValidator.validateEmail(userRegistrationDto.getEmailAddress());
-        UserNameValidator.validateUserName(userRegistrationDto.getUserName());
-        UserAuthentication userAuthentication = new UserAuthentication(userRegistrationDto.getUserName(),
-                userRegistrationDto.getPassword(), userRegistrationDto.getEmailAddress());
-        UserAuthentication registeredUser = registrationService.registerUser(userAuthentication);
-        return new UserRegistrationResponse(registeredUser.getUsername(), registeredUser.getEmailAddress());
+    public ModelAndView registerUser(@ModelAttribute UserRegistrationDto userRegistrationDto) {
+        try {
+            RegistrationRequestValidator.validateRequest(userRegistrationDto);
+            EmailValidator.validateEmail(userRegistrationDto.getEmailAddress());
+            UserNameValidator.validateUserName(userRegistrationDto.getUserName());
+            UserAuthentication userAuthentication = new UserAuthentication(userRegistrationDto.getUserName(),
+                    userRegistrationDto.getPassword(), userRegistrationDto.getEmailAddress());
+            registrationService.registerUser(userAuthentication);
+        } catch (RuntimeException e) {
+            ModelAndView modelAndView = new ModelAndView("register/register");
+            modelAndView.addObject("error", e.getMessage());
+            return modelAndView;
+        }
+        return new ModelAndView("register/registration-successful");
+    }
+
+    @GetMapping("/register")
+    public String showRegisterPage() {
+        return "register/register";
     }
 }

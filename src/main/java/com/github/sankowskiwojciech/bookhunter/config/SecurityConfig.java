@@ -19,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    private static final String REGISTER_ENDPOINT = "/api/user/register";
+    private static final String REGISTER_ENDPOINT = "/register";
     private static final String LOGIN_ENDPOINT = "/login";
 
     @Override

@@ -18,7 +18,7 @@ public class RegistrationRequestValidator {
     private static final int MAX_EMAIL_ADDRESS_LENGTH = 30;
     private static final int MIN_EMAIL_ADDRESS_LENGTH = 0;
 
-    private static final int MAX_PASSWORD_LENGTH = 60;
+    private static final int MAX_PASSWORD_LENGTH = 20;
     private static final int MIN_PASSWORD_LENGTH = 5;
 
     private static final String USER_NAME_FIELD_NAME = "userName";
@@ -72,7 +72,7 @@ public class RegistrationRequestValidator {
     }
 
     private static void validateIfPasswordEqualsMatchingPassword(String password, String matchingPassword) {
-        if (!password.endsWith(matchingPassword)) {
+        if (!password.equals(matchingPassword)) {
             throw new PasswordMismatchException();
         }
     }
