@@ -10,8 +10,9 @@ public class ErrorMessages {
     public static final String INVALID_USER_NAME_FORMAT = "User name format is invalid";
     public static final String MISSING_MANDATORY_FIELD = "Missing mandatory field: %s";
     public static final String INVALID_LENGTH = "Length of %s field must be between %d and %d characters";
-    public static final String USER_ALREADY_EXISTS = "User with given %s already exists";
-    public static final String PASSWORD_MISMATCH = "Passwords are different";
+    public static final String USER_WITH_GIVEN_EMAIL_ADDRESS_ALREADY_EXISTS = "User with given email address already exists";
+    public static final String USER_WITH_USER_NAME_ADDRESS_ALREADY_EXISTS = "User with given user name already exists";
+    public static final String PASSWORD_MISMATCH = "Passwords does not match";
     public static final String INVALID_USERNAME_OR_PASSWORD = "Invalid username or password";
     public static final String AUTHOR_NOT_FOUND = "Author not found";
     public static final String BOOK_NOT_FOUND = "Book not found";

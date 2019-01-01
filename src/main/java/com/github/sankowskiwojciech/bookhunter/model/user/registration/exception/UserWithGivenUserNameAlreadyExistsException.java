@@ -5,8 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-public class PasswordMismatchException extends RuntimeException {
-    public PasswordMismatchException() {
-        super(ErrorMessages.PASSWORD_MISMATCH);
+public class UserWithGivenUserNameAlreadyExistsException extends RuntimeException {
+    public UserWithGivenUserNameAlreadyExistsException() {
+        super(ErrorMessages.USER_WITH_USER_NAME_ADDRESS_ALREADY_EXISTS);
     }
 }
