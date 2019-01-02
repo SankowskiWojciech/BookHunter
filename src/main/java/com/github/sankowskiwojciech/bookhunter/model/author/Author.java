@@ -1,11 +1,13 @@
 package com.github.sankowskiwojciech.bookhunter.model.author;
 
+import com.github.sankowskiwojciech.bookhunter.model.book.BookBasicInformation;
 import com.github.sankowskiwojciech.bookhunter.model.genre.Category;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.io.InputStream;
+import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -21,4 +23,5 @@ public class Author {
     private final InputStream profilePhoto;
     private final String description;
     private final Set<Category> categories;
+    private final List<BookBasicInformation> books;
 }

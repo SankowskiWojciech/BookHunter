@@ -1,10 +1,11 @@
 package com.github.sankowskiwojciech.bookhunter.model.author;
 
+import com.github.sankowskiwojciech.bookhunter.model.book.BookBasicInformation;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.io.InputStream;
-import java.util.Set;
+import java.util.List;
 
 @AllArgsConstructor
 @Getter
@@ -17,5 +18,6 @@ public class AuthorResponse {
     private final String deathYear;
     private final InputStream profilePhoto;
     private final String description;
-    private final Set<String> genres;
+    private final String categories;
+    private final List<BookBasicInformation> books;
 }

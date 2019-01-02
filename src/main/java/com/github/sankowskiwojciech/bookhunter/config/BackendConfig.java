@@ -43,7 +43,7 @@ public class BackendConfig {
 
     @Bean
     public AuthorBackend authorBackend() {
-        return new AuthorBackendImpl(authorRepository);
+        return new AuthorBackendImpl(authorRepository, bookAuthorRelationRepository);
     }
 
     @Bean
