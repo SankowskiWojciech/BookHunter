@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>Spring Security Example </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="container col-md-4 col-md-offset-4">
+
+    <div class="card" style="width: 48rem;">
+        <img class="card-img-top" src="${image}" alt="Card image cap">
+        <div class="card-body">
+
+            <table class="table">
+                <tbody>
+                <tr th:if="${title}">
+                    <th scope="row">Title:</th>
+                    <td class="card-text" th:text="${title}"></td>
+                </tr>
+                <tr th:if="${originalTitle}">
+                    <th scope="row">Original title:</th>
+                    <td class="card-text" th:text="${originalTitle}"></td>
+                </tr>
+                <tr th:if="${releaseYear}">
+                    <th scope="row">Release year:</th>
+                    <td class="card-text" th:text="${releaseYear}"></td>
+                </tr>
+                <tr th:if="${categories}">
+                    <th scope="row">Categories:</th>
+                    <td class="card-text" th:text="${categories}"></td>
+                </tr>
+                <tr th:if="${country}">
+                    <th scope="row">Country:</th>
+                    <td class="card-text" th:text="${country}"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table class="table" th:if="${not #lists.isEmpty(authors)}">
+                <thead>
+                <tr>
+                    <th scope="col">Authors</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="author: ${authors}">
+                    <td>
+                        <a th:href="@{/author/{authorId}(authorId=${author.id})}"
+                           th:text="${author.name} + ' ' + ${author.surName}"></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p class="card-text" th:if="${description}" th:text="${description}"></p>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

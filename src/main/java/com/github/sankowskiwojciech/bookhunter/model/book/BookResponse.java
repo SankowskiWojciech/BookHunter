@@ -7,7 +7,6 @@ import lombok.Getter;
 
 import java.io.InputStream;
 import java.util.List;
-import java.util.Set;
 
 @AllArgsConstructor
 @Getter
@@ -18,7 +17,7 @@ public class BookResponse {
     private final String title;
     private final String originalTitle;
     private final String releaseYear;
-    private final Set<String> genres;
+    private final String categories;
     private final String description;
     private final String country;
     private final InputStream coverImage;
