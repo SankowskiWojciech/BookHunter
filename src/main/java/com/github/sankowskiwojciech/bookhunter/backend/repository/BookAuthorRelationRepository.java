@@ -10,4 +10,6 @@ import java.util.List;
 public interface BookAuthorRelationRepository extends JpaRepository<BookAuthorRelationEntity, Long> {
 
     List<BookAuthorRelationEntity> findByBookEntityIsbn(String bookId);
+
+    List<BookAuthorRelationEntity> findByAuthorEntityId(Long authorId);
 }
