@@ -7,5 +7,5 @@ import lombok.Getter;
 @Getter
 public class BookBasicInformation {
     private final String isbn;
-    private final String tittle;
+    private final String title;
 }
