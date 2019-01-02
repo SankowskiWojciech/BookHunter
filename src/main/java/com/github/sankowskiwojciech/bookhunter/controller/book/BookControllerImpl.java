@@ -17,6 +17,14 @@ import org.springframework.web.servlet.ModelAndView;
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class BookControllerImpl {
 
+    private static final String TITLE_ATTRIBUTE_NAME = "title";
+    private static final String ORIGINAL_TITLE_ATTRIBUTE_NAME = "originalTitle";
+    private static final String RELEASE_YEAR_ATTRIBUTE_NAME = "releaseYear";
+    private static final String DESCRIPTION_ATTRIBUTE_NAME = "description";
+    private static final String COUNTRY_ATTRIBUTE_NAME = "country";
+    private static final String CATEGORIES_ATTRIBUTE_NAME = "categories";
+    private static final String AUTHORS_ATTRIBUTE_NAME = "authors";
+
     private final BookService bookService;
 
     @GetMapping("/{bookId}")
@@ -27,12 +35,13 @@ public class BookControllerImpl {
 
         BookResponse bookResponse = new BookToBookResponse().apply(book);
 
-        modelAndView.addObject("title", bookResponse.getTitle());
-        modelAndView.addObject("releaseYear", bookResponse.getReleaseYear());
-        modelAndView.addObject("description", bookResponse.getDescription());
-        modelAndView.addObject("country", bookResponse.getCountry());
-        modelAndView.addObject("categories", bookResponse.getCategories());
-        modelAndView.addObject("authors", bookResponse.getAuthors());
+        modelAndView.addObject(TITLE_ATTRIBUTE_NAME, bookResponse.getTitle());
+        modelAndView.addObject(ORIGINAL_TITLE_ATTRIBUTE_NAME, bookResponse.getOriginalTitle());
+        modelAndView.addObject(RELEASE_YEAR_ATTRIBUTE_NAME, bookResponse.getReleaseYear());
+        modelAndView.addObject(DESCRIPTION_ATTRIBUTE_NAME, bookResponse.getDescription());
+        modelAndView.addObject(COUNTRY_ATTRIBUTE_NAME, bookResponse.getCountry());
+        modelAndView.addObject(CATEGORIES_ATTRIBUTE_NAME, bookResponse.getCategories());
+        modelAndView.addObject(AUTHORS_ATTRIBUTE_NAME, bookResponse.getAuthors());
 
         return modelAndView;
     }

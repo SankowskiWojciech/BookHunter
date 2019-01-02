@@ -26,26 +26,30 @@
 
             <table class="table">
                 <tbody>
-                <tr>
+                <tr th:if="${title}">
                     <th scope="row">Title:</th>
                     <td class="card-text" th:text="${title}"></td>
                 </tr>
-                <tr>
+                <tr th:if="${originalTitle}">
+                    <th scope="row">Original title:</th>
+                    <td class="card-text" th:text="${originalTitle}"></td>
+                </tr>
+                <tr th:if="${releaseYear}">
                     <th scope="row">Release year:</th>
                     <td class="card-text" th:text="${releaseYear}"></td>
                 </tr>
-                <tr>
-                    <th scope="row">Country:</th>
-                    <td class="card-text" th:text="${country}"></td>
-                </tr>
-                <tr>
+                <tr th:if="${categories}">
                     <th scope="row">Categories:</th>
                     <td class="card-text" th:text="${categories}"></td>
+                </tr>
+                <tr th:if="${country}">
+                    <th scope="row">Country:</th>
+                    <td class="card-text" th:text="${country}"></td>
                 </tr>
                 </tbody>
             </table>
 
-            <table class="table">
+            <table class="table" th:if="${not #lists.isEmpty(authors)}">
                 <thead>
                 <tr>
                     <th scope="col">Authors</th>
@@ -61,7 +65,7 @@
                 </tbody>
             </table>
 
-            <p class="card-text" th:text="${description}"></p>
+            <p class="card-text" th:if="${description}" th:text="${description}"></p>
 
         </div>
     </div>
