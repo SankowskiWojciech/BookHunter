@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -42,6 +43,7 @@ public class AuthorEntity {
 
     @Lob
     @Column(name = "PROFILE_PHOTO")
+    @Type(type = "org.hibernate.type.BinaryType")
     private byte[] profilePhoto;
 
     @Column(name = "DESCRIPTION", length = 5000)
