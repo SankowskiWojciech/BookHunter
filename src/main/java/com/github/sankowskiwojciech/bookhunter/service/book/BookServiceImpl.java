@@ -6,6 +6,9 @@ import com.github.sankowskiwojciech.bookhunter.model.book.excetion.BookNotFoundE
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @AllArgsConstructor
 public class BookServiceImpl implements BookService {
@@ -19,5 +22,10 @@ public class BookServiceImpl implements BookService {
             throw new BookNotFoundException();
         }
         return book;
+    }
+
+    @Override
+    public List<Book> findBooksByBookIds(List<String> bookIdList) {
+        return bookIdList.stream().map(this::findBookByBookId).collect(Collectors.toList());
     }
 }

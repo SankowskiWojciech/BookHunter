@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/", REGISTER_ENDPOINT, LOGIN_ENDPOINT)
+                .antMatchers(REGISTER_ENDPOINT, LOGIN_ENDPOINT)
                 .permitAll();
 
         http
