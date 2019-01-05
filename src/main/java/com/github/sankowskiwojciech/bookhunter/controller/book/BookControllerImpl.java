@@ -4,8 +4,10 @@ import com.github.sankowskiwojciech.bookhunter.controller.book.transformer.BookT
 import com.github.sankowskiwojciech.bookhunter.model.book.Book;
 import com.github.sankowskiwojciech.bookhunter.model.book.BookResponse;
 import com.github.sankowskiwojciech.bookhunter.service.book.BookService;
+import com.github.sankowskiwojciech.bookhunter.service.user.library.UserLibraryService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,10 +29,14 @@ public class BookControllerImpl {
     private static final String AUTHORS_ATTRIBUTE_NAME = "authors";
 
     private final BookService bookService;
+    private final UserLibraryService userLibraryService;
 
     @GetMapping("/{bookId}")
     public ModelAndView findBookById(@PathVariable String bookId) {
         Book book = bookService.findBookByBookId(bookId);
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        userLibraryService.addBookToUserRecentlyViewedBooks(userName, book.getIsbn());
 
         ModelAndView modelAndView = new ModelAndView("book/book");
 

@@ -11,17 +11,17 @@ import java.util.stream.Collectors;
 @Converter
 public class CategoriesConverter implements AttributeConverter<Set<Category>, String> {
 
-    private static final String REGEX_SPLIT = " ";
+    private static final String REGEX = " ";
 
     @Override
     public String convertToDatabaseColumn(Set<Category> categories) {
         Set<String> categoriesStringSet = categories.stream().map(Category::name).collect(Collectors.toSet());
-        return String.join(" ", categoriesStringSet);
+        return String.join(REGEX, categoriesStringSet);
     }
 
     @Override
     public Set<Category> convertToEntityAttribute(String categoriesString) {
-        String[] categoriesSetString = categoriesString.trim().split(REGEX_SPLIT);
+        String[] categoriesSetString = categoriesString.trim().split(REGEX);
         return Arrays.stream(categoriesSetString).map(Category::valueOf).collect(Collectors.toSet());
     }
 }

@@ -53,57 +53,58 @@
 </nav>
 
 <body>
-
-<table class="table table-borderless">
+<table class="table table-borderless" th:if="${not #lists.isEmpty(recentlyViewedBooks)}">
     <thead>
     <tr>
-        <th scope="col" class="text-center"></th>
-        <th scope="col" class="text-center"></th>
         <th scope="col" class="text-center">Recently viewed</th>
-        <th scope="col" class="text-center"></th>
-        <th scope="col" class="text-center"></th>
     </tr>
     </thead>
     <tbody>
+
     <tr>
-        <td>
+        <td th:if="${recentlyViewedBooks[0]}" th:with="book=${recentlyViewedBooks[0]}">
             <figure class="figure">
-                <a th:href="@{/book/1234567890123}">
-                    <img th:src="@{images/img1.jpg}" class="rounded" style="width:200px; height:250px;">
+                <a th:href="@{/book/{bookId}(bookId=${book.isbn})}">
+                    <img th:attr="src=@{${book.coverImage}}" class="rounded" style="width:200px; height:250px;"
+                         alt="${book.title}">
                 </a>
-                <figcaption class="figure-caption text-center">A caption for</figcaption>
+                <figcaption class="figure-caption text-center" th:text="${book.title}"></figcaption>
             </figure>
         </td>
-        <td>
+        <td th:if="${recentlyViewedBooks[1]}" th:with="book=${recentlyViewedBooks[1]}">
             <figure class="figure">
-                <a th:href="@{/book/1234567890123}">
-                    <img th:src="@{images/img1.jpg}" class="rounded" style="width:200px; height:250px;">
+                <a th:href="@{/book/{bookId}(bookId=${book.isbn})}">
+                    <img th:attr="src=@{${book.coverImage}}" class="rounded" style="width:200px; height:250px;"
+                         alt="${book.title}">
                 </a>
-                <figcaption class="figure-caption text-center">A caption for</figcaption>
+                <figcaption class="figure-caption text-center" th:text="${book.title}"></figcaption>
             </figure>
         </td>
-        <td>
+        <td th:if="${recentlyViewedBooks[2]}" th:with="book=${recentlyViewedBooks[2]}">
             <figure class="figure">
-                <a th:href="@{/book/1234567890123}">
-                    <img th:src="@{images/img1.jpg}" class="rounded" style="width:200px; height:250px;">
+                <a th:href="@{/book/{bookId}(bookId=${book.isbn})}">
+                    <img th:attr="src=@{${book.coverImage}}" class="rounded" style="width:200px; height:250px;"
+                         alt="${book.title}">
                 </a>
-                <figcaption class="figure-caption text-center">A caption for</figcaption>
+                <figcaption class="figure-caption text-center" th:text="${book.title}"></figcaption>
             </figure>
         </td>
-        <td>
+        <td th:if="${recentlyViewedBooks[3]}" th:with="book=${recentlyViewedBooks[4]}">
             <figure class="figure">
-                <a th:href="@{/book/1234567890123}">
-                    <img th:src="@{images/img1.jpg}" class="rounded" style="width:200px; height:250px;">
+                <a th:href="@{/book/{bookId}(bookId=${book.isbn})}">
+                    <img th:attr="src=@{${book.coverImage}}" class="rounded" style="width:200px; height:250px;"
+                         alt="${book.title}">
                 </a>
-                <figcaption class="figure-caption text-center">A caption for</figcaption>
+                <figcaption class="figure-caption text-center" th:text="${book.title}"></figcaption>
             </figure>
         </td>
-        <td>
+        <td th:if="${recentlyViewedBooks[4]}" th:with="book=${recentlyViewedBooks[4]}">
             <figure class="figure">
-                <a th:href="@{/book/1234567890123}">
-                    <img th:src="@{images/img1.jpg}" class="rounded" style="width:200px; height:250px;">
+                <a th:href="@{/book/{bookId}(bookId=${book.isbn})}">
+                    <img th:attr="src=@{${book.coverImage}}" class="rounded" style="width:200px; height:250px;"
+                         alt="${book.title}">
                 </a>
-                <figcaption class="figure-caption text-center">A caption for</figcaption>
+                <figcaption class="figure-caption text-center" th:text="${book.title}"></figcaption>
             </figure>
         </td>
     </tr>
