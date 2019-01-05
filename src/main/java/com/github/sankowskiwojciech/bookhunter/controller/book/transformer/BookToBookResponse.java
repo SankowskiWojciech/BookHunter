@@ -2,8 +2,9 @@ package com.github.sankowskiwojciech.bookhunter.controller.book.transformer;
 
 import com.github.sankowskiwojciech.bookhunter.model.book.Book;
 import com.github.sankowskiwojciech.bookhunter.model.book.BookResponse;
-import com.github.sankowskiwojciech.bookhunter.model.genre.Category;
+import com.github.sankowskiwojciech.bookhunter.model.category.Category;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
@@ -11,6 +12,9 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class BookToBookResponse implements Function<Book, BookResponse> {
+
+    private static final String IMAGE_DATA_ENCODED_BASE_64_PREFIX = "data:image/jpg;base64,";
+
     @Override
     public BookResponse apply(Book book) {
         return new BookResponse(
@@ -21,7 +25,7 @@ public class BookToBookResponse implements Function<Book, BookResponse> {
                 getCategoriesAsString(book.getCategories()),
                 book.getDescription(),
                 getCountryByCountryCode(book.getCountryCode()),
-                book.getCoverImage(),
+                getCoverImageData(book.getCoverImage()),
                 book.getAuthors()
         );
     }
@@ -33,5 +37,9 @@ public class BookToBookResponse implements Function<Book, BookResponse> {
     private String getCategoriesAsString(Set<Category> categoriesSet) {
         List<String> categoriesList = categoriesSet.stream().map(Category::getCategory).collect(Collectors.toList());
         return String.join(" ", categoriesList);
+    }
+
+    private String getCoverImageData(byte[] encodedImage) {
+        return encodedImage != null ? IMAGE_DATA_ENCODED_BASE_64_PREFIX + new String(encodedImage, StandardCharsets.UTF_8) : null;
     }
 }

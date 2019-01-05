@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class BookControllerImpl {
 
+    private static final String COVER_IMAGE_ATTRIBUTE_NAME = "coverImage";
     private static final String TITLE_ATTRIBUTE_NAME = "title";
     private static final String ORIGINAL_TITLE_ATTRIBUTE_NAME = "originalTitle";
     private static final String RELEASE_YEAR_ATTRIBUTE_NAME = "releaseYear";
@@ -35,6 +36,7 @@ public class BookControllerImpl {
 
         BookResponse bookResponse = new BookToBookResponse().apply(book);
 
+        modelAndView.addObject(COVER_IMAGE_ATTRIBUTE_NAME, bookResponse.getCoverImage());
         modelAndView.addObject(TITLE_ATTRIBUTE_NAME, bookResponse.getTitle());
         modelAndView.addObject(ORIGINAL_TITLE_ATTRIBUTE_NAME, bookResponse.getOriginalTitle());
         modelAndView.addObject(RELEASE_YEAR_ATTRIBUTE_NAME, bookResponse.getReleaseYear());

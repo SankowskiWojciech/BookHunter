@@ -1,4 +1,4 @@
-package com.github.sankowskiwojciech.bookhunter.model.genre;
+package com.github.sankowskiwojciech.bookhunter.model.category;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

@@ -1,6 +1,6 @@
-package com.github.sankowskiwojciech.bookhunter.model.genre.converter;
+package com.github.sankowskiwojciech.bookhunter.model.category.converter;
 
-import com.github.sankowskiwojciech.bookhunter.model.genre.Category;
+import com.github.sankowskiwojciech.bookhunter.model.category.Category;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
