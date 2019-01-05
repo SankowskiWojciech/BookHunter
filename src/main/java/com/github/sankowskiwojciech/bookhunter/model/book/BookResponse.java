@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-import java.io.InputStream;
 import java.util.List;
 
 @AllArgsConstructor
@@ -20,6 +19,6 @@ public class BookResponse {
     private final String categories;
     private final String description;
     private final String country;
-    private final InputStream coverImage;
+    private final String coverImage;
     private final List<AuthorBasicInformation> authors;
 }
