@@ -1,7 +1,7 @@
 package com.github.sankowskiwojciech.bookhunter.model.author.db;
 
-import com.github.sankowskiwojciech.bookhunter.model.genre.converter.CategoriesConverter;
-import com.github.sankowskiwojciech.bookhunter.model.genre.Category;
+import com.github.sankowskiwojciech.bookhunter.model.category.Category;
+import com.github.sankowskiwojciech.bookhunter.model.category.converter.CategoriesConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +14,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
-import java.io.InputStream;
 import java.util.Set;
 
 @Entity
@@ -43,7 +42,7 @@ public class AuthorEntity {
 
     @Lob
     @Column(name = "PROFILE_PHOTO")
-    private InputStream profilePhoto;
+    private byte[] profilePhoto;
 
     @Column(name = "DESCRIPTION", length = 5000)
     private String description;

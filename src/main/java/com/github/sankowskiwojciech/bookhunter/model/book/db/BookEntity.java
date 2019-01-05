@@ -1,12 +1,13 @@
 package com.github.sankowskiwojciech.bookhunter.model.book.db;
 
-import com.github.sankowskiwojciech.bookhunter.model.genre.Category;
-import com.github.sankowskiwojciech.bookhunter.model.genre.converter.CategoriesConverter;
+import com.github.sankowskiwojciech.bookhunter.model.category.Category;
+import com.github.sankowskiwojciech.bookhunter.model.category.converter.CategoriesConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -14,7 +15,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
-import java.io.InputStream;
 import java.util.Set;
 
 @Entity
@@ -50,5 +50,6 @@ public class BookEntity {
 
     @Lob
     @Column(name = "COVER_IMAGE")
-    private InputStream coverImage;
+    @Type(type = "org.hibernate.type.BinaryType")
+    private byte[] coverImage;
 }
