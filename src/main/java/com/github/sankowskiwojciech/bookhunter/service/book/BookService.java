@@ -8,4 +8,6 @@ public interface BookService {
     Book findBookByBookId(String bookId);
 
     List<Book> findBooksByBookIds(List<String> bookIdList);
+
+    List<Book> findBookByTitleIgnoreCaseContainingSequence(String searchValue);
 }

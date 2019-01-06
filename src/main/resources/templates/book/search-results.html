@@ -54,62 +54,29 @@
 </nav>
 
 <body>
+<p th:if="${#lists.isEmpty(books)}">No books were found</p>
+<table class="table table-borderless" th:if="${not #lists.isEmpty(books)}">
+    <thead>
+    <tr>
+        <th scope="col" class="text-center">Search results</th>
+    </tr>
+    </thead>
+    <tbody>
 
-<div class="container col-md-4 col-md-offset-4">
-
-    <div class="card" style="width: 48rem;">
-        <img class="card-img-top rounded center-block" th:attr="src=@{${profilePhoto}}" th:if="${profilePhoto}"
-             style="width:300px; height:400px;">
-
-        <div class="card-body">
-
-            <table class="table">
-                <tbody>
-                <tr th:if="${name}">
-                    <th scope="row">Name:</th>
-                    <td class="card-text" th:text="${name}"></td>
-                </tr>
-                <tr th:if="${surname}">
-                    <th scope="row">Surname:</th>
-                    <td class="card-text" th:text="${surname}"></td>
-                </tr>
-                <tr th:if="${birthYear}">
-                    <th scope="row">Birth year:</th>
-                    <td class="card-text" th:text="${birthYear}"></td>
-                </tr>
-                <tr th:if="${deathYear}">
-                    <th scope="row">Death year:</th>
-                    <td class="card-text" th:text="${deathYear}"></td>
-                </tr>
-                <tr th:if="${categories}">
-                    <th scope="row">Categories:</th>
-                    <td class="card-text" th:text="${categories}"></td>
-                </tr>
-                </tbody>
-            </table>
-
-            <table class="table" th:if="${not #lists.isEmpty(books)}">
-                <thead>
-                <tr>
-                    <th scope="col">Books</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="book: ${books}">
-                    <td>
-                        <a th:href="@{/book/{bookId}(bookId=${book.isbn})}"
-                           th:text="${book.title}"></a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-
-            <p class="card-text" th:if="${description}" th:text="${description}"></p>
-
-        </div>
-    </div>
-
-</div>
+    <tr th:each="book: ${books}">
+        <td>
+            <figure class="figure">
+                <a th:href="@{/book/{bookId}(bookId=${book.isbn})}">
+                    <img th:attr="src=@{${book.coverImage}}" class="rounded" style="width:200px; height:250px;">
+                </a>
+            </figure>
+        </td>
+        <td>
+            <a th:href="@{/book/{bookId}(bookId=${book.isbn})}" th:text="${book.title}"></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>

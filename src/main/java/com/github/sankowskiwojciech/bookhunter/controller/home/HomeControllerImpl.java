@@ -30,11 +30,8 @@ public class HomeControllerImpl {
     @GetMapping
     public ModelAndView showHomePage() {
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
-
         ModelAndView modelAndView = new ModelAndView("home/home");
-
         loadRecentlyViewedBooks(modelAndView, userName);
-
         return modelAndView;
     }
 

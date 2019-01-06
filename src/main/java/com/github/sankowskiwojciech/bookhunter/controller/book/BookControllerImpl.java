@@ -12,7 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(value = "/book")
@@ -27,6 +31,7 @@ public class BookControllerImpl {
     private static final String COUNTRY_ATTRIBUTE_NAME = "country";
     private static final String CATEGORIES_ATTRIBUTE_NAME = "categories";
     private static final String AUTHORS_ATTRIBUTE_NAME = "authors";
+    private static final String BOOKS_ATTRIBUTE_NAME = "books";
 
     private final BookService bookService;
     private final UserLibraryService userLibraryService;
@@ -51,6 +56,16 @@ public class BookControllerImpl {
         modelAndView.addObject(CATEGORIES_ATTRIBUTE_NAME, bookResponse.getCategories());
         modelAndView.addObject(AUTHORS_ATTRIBUTE_NAME, bookResponse.getAuthors());
 
+        return modelAndView;
+    }
+
+    @GetMapping("/search")
+    public ModelAndView searchBook(@RequestParam String searchValue) {
+        List<Book> bookList = bookService.findBookByTitleIgnoreCaseContainingSequence(searchValue);
+        BookToBookResponse transformer = new BookToBookResponse();
+        List<BookResponse> bookResponseList = bookList.stream().map(transformer).collect(Collectors.toList());
+        ModelAndView modelAndView = new ModelAndView("book/search-results");
+        modelAndView.addObject(BOOKS_ATTRIBUTE_NAME, bookResponseList);
         return modelAndView;
     }
 }
