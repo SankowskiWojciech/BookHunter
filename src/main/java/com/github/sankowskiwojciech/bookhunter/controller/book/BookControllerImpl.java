@@ -67,5 +67,6 @@ public class BookControllerImpl {
         ModelAndView modelAndView = new ModelAndView("book/search-results");
         modelAndView.addObject(BOOKS_ATTRIBUTE_NAME, bookResponseList);
         return modelAndView;
+        //todo: add pagination
     }
 }
