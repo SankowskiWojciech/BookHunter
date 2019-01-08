@@ -19,7 +19,8 @@ public class BookEntityAndAuthorBasicInformationToBook implements BiFunction<Lis
                 bookEntity.getDescription(),
                 bookEntity.getCountryCode(),
                 bookEntity.getCoverImage(),
-                authorBasicInformationList
+                authorBasicInformationList,
+                new BookRatingEntityToBookRating().apply(bookEntity.getBookRatingEntity())
         );
     }
 }

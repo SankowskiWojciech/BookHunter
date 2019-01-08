@@ -84,6 +84,14 @@
                     <th scope="row">Country:</th>
                     <td class="card-text" th:text="${country}"></td>
                 </tr>
+                <tr>
+                    <th scope="row">Average rate:</th>
+                    <td class="card-text" th:text="${#numbers.formatDecimal(averageRate, 1, 2, 'POINT')}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">All rates:</th>
+                    <td class="card-text" th:text="${numberOfRates}"></td>
+                </tr>
                 </tbody>
             </table>
 

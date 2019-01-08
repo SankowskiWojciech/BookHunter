@@ -32,6 +32,8 @@ public class BookControllerImpl {
     private static final String CATEGORIES_ATTRIBUTE_NAME = "categories";
     private static final String AUTHORS_ATTRIBUTE_NAME = "authors";
     private static final String BOOKS_ATTRIBUTE_NAME = "books";
+    private static final String NUMBER_OF_RATES_ATTRIBUTE_NAME = "numberOfRates";
+    private static final String AVERAGE_RATE_ATTRIBUTE_NAME = "averageRate";
 
     private final BookService bookService;
     private final UserLibraryService userLibraryService;
@@ -55,6 +57,8 @@ public class BookControllerImpl {
         modelAndView.addObject(COUNTRY_ATTRIBUTE_NAME, bookResponse.getCountry());
         modelAndView.addObject(CATEGORIES_ATTRIBUTE_NAME, bookResponse.getCategories());
         modelAndView.addObject(AUTHORS_ATTRIBUTE_NAME, bookResponse.getAuthors());
+        modelAndView.addObject(NUMBER_OF_RATES_ATTRIBUTE_NAME, bookResponse.getNumberOfRates());
+        modelAndView.addObject(AVERAGE_RATE_ATTRIBUTE_NAME, bookResponse.getAverageRate());
 
         return modelAndView;
     }
