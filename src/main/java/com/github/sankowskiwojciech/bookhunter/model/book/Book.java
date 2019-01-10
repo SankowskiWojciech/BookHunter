@@ -6,12 +6,14 @@ import com.github.sankowskiwojciech.bookhunter.model.category.Category;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
 @Getter
+@Setter
 @EqualsAndHashCode(of = "isbn")
 public class Book {
 
@@ -24,5 +26,5 @@ public class Book {
     private final String countryCode;
     private final byte[] coverImage;
     private final List<AuthorBasicInformation> authors;
-    private final BookRating bookRating;
+    private BookRating bookRating;
 }

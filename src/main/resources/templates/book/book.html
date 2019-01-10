@@ -61,17 +61,17 @@
         <img class="card-img-top rounded center-block" th:attr="src=@{${coverImage}}" th:if="${coverImage}"
              style="width:300px; height:400px;">
         <div class="card-body">
-
-            <form class="form-inline" th:action="@{/book/{bookId}/rate(bookId=${isbn})}" th:method="post">
-                <select class="custom-select my-1 mr-sm-2" th:field="*{selectedRate}">
-                    <option th:each="option : ${ratingOptions.keySet()}"
-                            th:value="${option}"
-                            th:text="${ratingOptions.get(option)}">Options
+            <form class="form-inline" th:action="@{/book/{bookId}/rate(bookId=${isbn})}" th:method="post"
+                  th:object="${selectedRate}">
+                <select class="custom-select my-1 mr-sm-2" id="selectedRate" name="selectedRate"
+                        th:field="*{optionValue}">
+                    <option th:each="option : ${ratingOptions}"
+                            th:value="${option.getOptionName()}"
+                            th:text="${option.getOptionValue()}">Options
                     </option>
                 </select>
                 <button class="btn btn-primary my-1" type="submit">Rate!</button>
             </form>
-
             <table class="table">
                 <tbody>
                 <tr th:if="${title}">

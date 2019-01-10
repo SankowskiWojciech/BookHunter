@@ -1,4 +1,4 @@
-package com.github.sankowskiwojciech.bookhunter.backend.book.transformer;
+package com.github.sankowskiwojciech.bookhunter.backend.book.rating.transformer;
 
 import com.github.sankowskiwojciech.bookhunter.model.book.rating.BookRating;
 import com.github.sankowskiwojciech.bookhunter.model.book.rating.db.BookRatingEntity;

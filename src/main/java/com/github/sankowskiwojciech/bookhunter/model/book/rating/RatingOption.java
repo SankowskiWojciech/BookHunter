@@ -9,12 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class BookRating {
-
-    private String id;
-    private Integer rateOne;
-    private Integer rateTwo;
-    private Integer rateThree;
-    private Integer rateFour;
-    private Integer rateFive;
+public class RatingOption {
+    private String optionName;
+    private Integer optionValue;
 }
