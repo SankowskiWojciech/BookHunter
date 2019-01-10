@@ -21,4 +21,6 @@ public class BookResponse {
     private final String country;
     private final String coverImage;
     private final List<AuthorBasicInformation> authors;
+    private final Integer numberOfRates;
+    private final Double averageRate;
 }

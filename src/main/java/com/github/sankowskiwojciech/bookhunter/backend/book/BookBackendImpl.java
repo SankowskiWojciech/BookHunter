@@ -1,6 +1,7 @@
 package com.github.sankowskiwojciech.bookhunter.backend.book;
 
 import com.github.sankowskiwojciech.bookhunter.backend.book.transformer.BookEntityAndAuthorBasicInformationToBook;
+import com.github.sankowskiwojciech.bookhunter.backend.book.transformer.BookToBookEntity;
 import com.github.sankowskiwojciech.bookhunter.backend.repository.BookAuthorRelationRepository;
 import com.github.sankowskiwojciech.bookhunter.backend.repository.BookRepository;
 import com.github.sankowskiwojciech.bookhunter.model.author.AuthorBasicInformation;
@@ -43,6 +44,11 @@ public class BookBackendImpl implements BookBackend {
             return bookList;
         }
         return Collections.emptyList();
+    }
+
+    @Override
+    public void updateBookData(Book book) {
+        bookRepository.save(new BookToBookEntity().apply(book));
     }
 
     private Book getInformationAboutAuthorsAndTransformBookEntityToBook(BookEntity bookEntity, BookEntityAndAuthorBasicInformationToBook transformer) {

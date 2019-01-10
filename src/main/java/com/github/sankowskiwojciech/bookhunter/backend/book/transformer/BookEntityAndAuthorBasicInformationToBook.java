@@ -1,5 +1,6 @@
 package com.github.sankowskiwojciech.bookhunter.backend.book.transformer;
 
+import com.github.sankowskiwojciech.bookhunter.backend.book.rating.transformer.BookRatingEntityToBookRating;
 import com.github.sankowskiwojciech.bookhunter.model.author.AuthorBasicInformation;
 import com.github.sankowskiwojciech.bookhunter.model.book.Book;
 import com.github.sankowskiwojciech.bookhunter.model.book.db.BookEntity;
@@ -19,7 +20,8 @@ public class BookEntityAndAuthorBasicInformationToBook implements BiFunction<Lis
                 bookEntity.getDescription(),
                 bookEntity.getCountryCode(),
                 bookEntity.getCoverImage(),
-                authorBasicInformationList
+                authorBasicInformationList,
+                new BookRatingEntityToBookRating().apply(bookEntity.getBookRatingEntity())
         );
     }
 }

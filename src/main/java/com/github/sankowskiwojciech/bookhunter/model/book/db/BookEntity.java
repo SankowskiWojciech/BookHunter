@@ -1,5 +1,6 @@
 package com.github.sankowskiwojciech.bookhunter.model.book.db;
 
+import com.github.sankowskiwojciech.bookhunter.model.book.rating.db.BookRatingEntity;
 import com.github.sankowskiwojciech.bookhunter.model.category.Category;
 import com.github.sankowskiwojciech.bookhunter.model.category.converter.CategoriesConverter;
 import lombok.AccessLevel;
@@ -12,8 +13,11 @@ import org.hibernate.annotations.Type;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.Set;
 
@@ -52,4 +56,9 @@ public class BookEntity {
     @Column(name = "COVER_IMAGE")
     @Type(type = "org.hibernate.type.BinaryType")
     private byte[] coverImage;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "RATING")
+    private BookRatingEntity bookRatingEntity;
+
 }

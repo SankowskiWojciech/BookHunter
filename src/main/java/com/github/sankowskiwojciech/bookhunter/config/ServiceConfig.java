@@ -2,6 +2,7 @@ package com.github.sankowskiwojciech.bookhunter.config;
 
 import com.github.sankowskiwojciech.bookhunter.backend.author.AuthorBackend;
 import com.github.sankowskiwojciech.bookhunter.backend.book.BookBackend;
+import com.github.sankowskiwojciech.bookhunter.backend.book.rating.BookRatingBackend;
 import com.github.sankowskiwojciech.bookhunter.backend.user.authentication.AuthenticationBackend;
 import com.github.sankowskiwojciech.bookhunter.backend.user.library.UserLibraryBackend;
 import com.github.sankowskiwojciech.bookhunter.backend.user.registration.RegistrationBackend;
@@ -41,6 +42,9 @@ public class ServiceConfig {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private BookRatingBackend bookRatingBackend;
+
     @Bean
     public RegistrationService registrationService() {
         return new RegistrationServiceImpl(registrationBackend, passwordEncoder);
@@ -58,7 +62,7 @@ public class ServiceConfig {
 
     @Bean
     public BookService bookService() {
-        return new BookServiceImpl(bookBackend);
+        return new BookServiceImpl(bookBackend, bookRatingBackend);
     }
 
     @Bean

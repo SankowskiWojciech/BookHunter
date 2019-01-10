@@ -9,4 +9,6 @@ public interface BookBackend {
     Book findBookById(String bookId);
 
     List<Book> findByTitleIgnoreCaseContainingSequence(String searchValue);
+
+    void updateBookData(Book book);
 }

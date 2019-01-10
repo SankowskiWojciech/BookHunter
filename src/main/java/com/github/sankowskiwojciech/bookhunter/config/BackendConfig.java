@@ -4,8 +4,11 @@ import com.github.sankowskiwojciech.bookhunter.backend.author.AuthorBackend;
 import com.github.sankowskiwojciech.bookhunter.backend.author.AuthorBackendImpl;
 import com.github.sankowskiwojciech.bookhunter.backend.book.BookBackend;
 import com.github.sankowskiwojciech.bookhunter.backend.book.BookBackendImpl;
+import com.github.sankowskiwojciech.bookhunter.backend.book.rating.BookRatingBackend;
+import com.github.sankowskiwojciech.bookhunter.backend.book.rating.BookRatingBackendImpl;
 import com.github.sankowskiwojciech.bookhunter.backend.repository.AuthorRepository;
 import com.github.sankowskiwojciech.bookhunter.backend.repository.BookAuthorRelationRepository;
+import com.github.sankowskiwojciech.bookhunter.backend.repository.BookRatingRepository;
 import com.github.sankowskiwojciech.bookhunter.backend.repository.BookRepository;
 import com.github.sankowskiwojciech.bookhunter.backend.repository.UserAuthenticationRepository;
 import com.github.sankowskiwojciech.bookhunter.backend.repository.UserLibraryRepository;
@@ -37,6 +40,9 @@ public class BackendConfig {
     @Autowired
     private UserLibraryRepository userLibraryRepository;
 
+    @Autowired
+    private BookRatingRepository bookRatingRepository;
+
     @Bean
     public RegistrationBackend registrationBackend() {
         return new RegistrationBackendImpl(userAuthenticationRepository);
@@ -60,5 +66,10 @@ public class BackendConfig {
     @Bean
     public UserLibraryBackend userLibrary() {
         return new UserLibraryBackendImpl(userLibraryRepository, userAuthenticationRepository);
+    }
+
+    @Bean
+    public BookRatingBackend bookRatingBackend() {
+        return new BookRatingBackendImpl(bookRatingRepository);
     }
 }
